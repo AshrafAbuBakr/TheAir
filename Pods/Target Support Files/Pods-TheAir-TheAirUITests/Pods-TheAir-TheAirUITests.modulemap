@@ -1,0 +1,6 @@
+framework module Pods_TheAir_TheAirUITests {
+  umbrella header "Pods-TheAir-TheAirUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
