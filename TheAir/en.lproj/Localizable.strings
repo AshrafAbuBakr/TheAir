@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  TheAir
+
+  Created by Ashraf on 30/11/2020.
+  
+*/
+"WrongLoginCredentials" = "Wrong User Name or Password!";
+"GeneralError" = "Error occured! Please try again later.";
+"NetworkError" = "Please make sure you are connected to the internet.";
