@@ -8,9 +8,10 @@
 import UIKit
 import ObjectMapper
 
-class ViewController: UIViewController, BaseView {
+class TopRatedViewController: UIViewController, BaseView {
     
     @IBOutlet weak var topRatedShowsTableView: UITableView!
+   
     var viewModel: TopRatedViewModel!
     
     override func viewDidLoad() {
@@ -30,7 +31,6 @@ class ViewController: UIViewController, BaseView {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         topRatedShowsTableView.refreshControl = refreshControl
-//        topRatedShowsTableView.addSubview(refreshControl)
     }
     
     @objc func refresh() {
@@ -39,7 +39,7 @@ class ViewController: UIViewController, BaseView {
 }
 
 
-extension ViewController: TopRatedViewProtocol {
+extension TopRatedViewController: TopRatedViewProtocol {
     func TopRatedSuccess() {
         topRatedShowsTableView.reloadData()
         topRatedShowsTableView.refreshControl?.endRefreshing()
@@ -51,7 +51,7 @@ extension ViewController: TopRatedViewProtocol {
     }
 }
 
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
+extension TopRatedViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfItems()
     }

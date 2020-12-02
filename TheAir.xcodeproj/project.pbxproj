@@ -27,10 +27,10 @@
 		FDB5F63A2575965B00534765 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDB5F6382575965B00534765 /* Localizable.strings */; };
 		FDB5F64B25759E6700534765 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB5F64A25759E6700534765 /* Connectivity.swift */; };
 		FDB5F65125759F7200534765 /* UserDefaultsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB5F65025759F7200534765 /* UserDefaultsHandler.swift */; };
-		FDBF50932575B7970091B7BB /* TopRatedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBF50922575B7970091B7BB /* TopRatedService.swift */; };
+		FDBF50932575B7970091B7BB /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBF50922575B7970091B7BB /* Services.swift */; };
 		FDDC53DD2575831500759AE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDC53DC2575831500759AE2 /* AppDelegate.swift */; };
 		FDDC53DF2575831500759AE2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDC53DE2575831500759AE2 /* SceneDelegate.swift */; };
-		FDDC53E12575831500759AE2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDC53E02575831500759AE2 /* ViewController.swift */; };
+		FDDC53E12575831500759AE2 /* TopRatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDC53E02575831500759AE2 /* TopRatedViewController.swift */; };
 		FDDC53E42575831500759AE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDDC53E22575831500759AE2 /* Main.storyboard */; };
 		FDDC53E62575831700759AE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDDC53E52575831700759AE2 /* Assets.xcassets */; };
 		FDDC53E92575831700759AE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDDC53E72575831700759AE2 /* LaunchScreen.storyboard */; };
@@ -85,11 +85,11 @@
 		FDB5F63E2575966C00534765 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = ../../en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FDB5F64A25759E6700534765 /* Connectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
 		FDB5F65025759F7200534765 /* UserDefaultsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsHandler.swift; sourceTree = "<group>"; };
-		FDBF50922575B7970091B7BB /* TopRatedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRatedService.swift; sourceTree = "<group>"; };
+		FDBF50922575B7970091B7BB /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		FDDC53D92575831500759AE2 /* TheAir.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheAir.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDDC53DC2575831500759AE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FDDC53DE2575831500759AE2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FDDC53E02575831500759AE2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FDDC53E02575831500759AE2 /* TopRatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRatedViewController.swift; sourceTree = "<group>"; };
 		FDDC53E52575831700759AE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FDDC53EA2575831700759AE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FDDC53EF2575831700759AE2 /* TheAirTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheAirTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,7 +163,7 @@
 		F40662112576F27100DCA36C /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				FDDC53E02575831500759AE2 /* ViewController.swift */,
+				FDDC53E02575831500759AE2 /* TopRatedViewController.swift */,
 				F4214FE92576FEB30096A603 /* TopRatedTableViewCell.swift */,
 			);
 			path = UI;
@@ -172,7 +172,6 @@
 		F40662122576F27A00DCA36C /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				FDBF50922575B7970091B7BB /* TopRatedService.swift */,
 				F40662172576F34600DCA36C /* TopRatedViewModel.swift */,
 			);
 			path = Data;
@@ -284,6 +283,7 @@
 		FDDC54102575849200759AE2 /* NetworkLayer */ = {
 			isa = PBXGroup;
 			children = (
+				FDBF50922575B7970091B7BB /* Services.swift */,
 				FDB5F64A25759E6700534765 /* Connectivity.swift */,
 				FDB5F5D12575888900534765 /* ErrorHandler.swift */,
 				FD97D18C2575859B00F56802 /* CachingMoyaPlugin.swift */,
@@ -542,11 +542,11 @@
 				FDB5F65125759F7200534765 /* UserDefaultsHandler.swift in Sources */,
 				F406620D2576F07600DCA36C /* TopRatedResult.swift in Sources */,
 				FDB5F5EF25758A4B00534765 /* ParsingHandler.swift in Sources */,
-				FDDC53E12575831500759AE2 /* ViewController.swift in Sources */,
+				FDDC53E12575831500759AE2 /* TopRatedViewController.swift in Sources */,
 				FDDC53DD2575831500759AE2 /* AppDelegate.swift in Sources */,
 				FDB5F5FA25758BC500534765 /* StringExtensions.swift in Sources */,
 				FD97D18B2575857D00F56802 /* MoyaProviderExtensions.swift in Sources */,
-				FDBF50932575B7970091B7BB /* TopRatedService.swift in Sources */,
+				FDBF50932575B7970091B7BB /* Services.swift in Sources */,
 				FDB5F64B25759E6700534765 /* Connectivity.swift in Sources */,
 				F40662182576F34600DCA36C /* TopRatedViewModel.swift in Sources */,
 				FDB5F5D22575888900534765 /* ErrorHandler.swift in Sources */,

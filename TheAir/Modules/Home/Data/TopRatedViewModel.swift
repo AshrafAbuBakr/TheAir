@@ -22,7 +22,7 @@ class TopRatedViewModel {
     }
     
     func getTopRatedFirstPage() {
-        RequestManager.beginRequest(withTargetType: TopRatedService.self, andTarget: TopRatedService.getTopRated(pageNumber: currentPage), responseModel: TopRatedResponse.self) { [unowned self] (data, error) in
+        RequestManager.beginRequest(withTargetType: Services.self, andTarget: Services.getTopRated(pageNumber: currentPage), responseModel: TopRatedResponse.self) { [unowned self] (data, error) in
             if let data = data as? TopRatedResponse, error == nil {
                 topRated = data
             } else {

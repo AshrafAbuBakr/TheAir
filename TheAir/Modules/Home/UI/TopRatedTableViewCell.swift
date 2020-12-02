@@ -14,6 +14,7 @@ class TopRatedTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var rateLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
+    @IBOutlet weak var posterShadowView: UIView!
     
     
     override func awakeFromNib() {
@@ -31,7 +32,8 @@ class TopRatedTableViewCell: UITableViewCell {
         titleLabel.text = title
         dateLabel.text = airDate
         rateLabel.text = "\(avgRate)"
-        
+        posterShadowView.layer.shadowOpacity = 0.2
+        posterShadowView.layer.shadowOffset = CGSize(width: 0.4, height: 1.0)
         if let imageURL = URL(string: posterURL) {
             posterImageView.kf.setImage(with: imageURL)
         } else {

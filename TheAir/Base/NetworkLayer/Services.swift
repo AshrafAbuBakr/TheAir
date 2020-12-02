@@ -11,22 +11,27 @@ import Foundation
 import Moya
 import Alamofire
 
-enum TopRatedService {
+enum Services {
+    case getGenres
     case getTopRated(pageNumber: Int)
 }
 
-extension TopRatedService: TargetType {
+extension Services: TargetType {
     
     var path: String {
         switch self {
         case .getTopRated(_):
             return "/tv/top_rated"
+        case .getGenres:
+            return "/genre/tv/list"
         }
     }
     
     var method: Alamofire.HTTPMethod {
         switch self {
         case .getTopRated(_):
+            return .get
+        case .getGenres:
             return .get
         }
     }
@@ -40,6 +45,9 @@ extension TopRatedService: TargetType {
         case .getTopRated(let pageNumber):
             let parameters: [String: Any] = ["api_key": API_KEY,
                                              "page": pageNumber]
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
+        case .getGenres:
+            let parameters: [String: Any] = ["api_key": API_KEY]
             return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
         }
     }
