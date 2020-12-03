@@ -33,6 +33,13 @@ class TopRatedViewModel {
         }
     }
     
+    func getFavorites() {
+        let shows = FavoritesHandler.shared.getAllFavorites()
+        let results = TopRatedResponse(results: shows)
+        topRated = results
+        
+    }
+    
     func numberOfItems() -> Int {
         return topRated?.results?.count ?? 0
     }

@@ -10,6 +10,7 @@ import Kingfisher
 
 class ShowDetailsViewController: UIViewController, BaseView {
 
+    @IBOutlet weak var favoriteButton: UIBarButtonItem!
     @IBOutlet weak var contentScrollView: UIScrollView!
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var showTitleLabel: UILabel!
@@ -31,7 +32,7 @@ class ShowDetailsViewController: UIViewController, BaseView {
         // Do any additional setup after loading the view.
         viewModel?.getDetails()
         viewModel?.getCast()
-        title = viewModel?.show?.name
+        title = viewModel?.show?.name        
     }
     
     private func populateUi()  {
@@ -43,8 +44,16 @@ class ShowDetailsViewController: UIViewController, BaseView {
         descriptionLabel.text = viewModel?.show?.overview ?? ""
         networkTableView.reloadData()
         networksTableViewHeightConstraint.constant = networkTableView.contentSize.height
+        if viewModel?.isFavoriteShow ?? false {
+            favoriteButton.image = UIImage(systemName: "heart.fill")
+        } else {
+            favoriteButton.image = UIImage(systemName: "heart")
+        }
     }
 
+    @IBAction func favoriteButtonTapped(_ sender: Any) {
+        viewModel?.toggleFavorite()
+    }
 }
 
 extension ShowDetailsViewController: ShowDetailsViewPrototocol {

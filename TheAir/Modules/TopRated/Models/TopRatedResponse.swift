@@ -21,6 +21,10 @@ struct TopRatedResponse: Mappable {
         
     }
     
+    init(results: [TopRatedResult]) {
+        self.results = results
+    }
+    
     mutating func mapping(map: Map) {
         page <- map["page"]
         totalPages <- map["total_pages"]

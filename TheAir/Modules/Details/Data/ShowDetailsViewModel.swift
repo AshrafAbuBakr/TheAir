@@ -17,6 +17,7 @@ protocol ShowDetailsViewPrototocol: class {
 class ShowDetailsViewModel {
     
     var show: TopRatedResult?
+    var inMemoryShow: TopRatedResult?
     var showDetails: DetailsResponse? {
         didSet {
             view?.detailsSuccess()
@@ -28,7 +29,14 @@ class ShowDetailsViewModel {
             view?.castSuccess()
         }
     }
+    var isFavoriteShow: Bool = false
     weak var view: ShowDetailsViewPrototocol?
+    
+    
+    init(show: TopRatedResult?) {
+        self.show = show
+        self.isFavoriteShow = isFavorite()
+    }
     
     func getDetails() {
         RequestManager.beginRequest(withTargetType: Services.self, andTarget: Services.getShowDetails(showID: show?.id ?? 0), responseModel: DetailsResponse.self) { [unowned self] (data, error) in
@@ -106,6 +114,28 @@ class ShowDetailsViewModel {
         let path = showCredits?.cast?[index].profilePath ?? ""
         let poster = IMAGE_BASEURL + path
         return URL(string: poster)
+    }
+    
+    func toggleFavorite() {
+        guard show != nil else {
+            return
+        }
+        if isFavoriteShow {
+            inMemoryShow = TopRatedResult(JSON: show!.toJSON())
+            FavoritesHandler.shared.removeFavorite(show: show!)
+            show = inMemoryShow
+        } else {
+            FavoritesHandler.shared.saveFavorite(show: show!)
+        }
+        isFavoriteShow.toggle()
+        view?.detailsSuccess()
+    }
+    
+    private func isFavorite() -> Bool {
+        guard show != nil else {
+            return false
+        }
+        return FavoritesHandler.shared.isFavorie(show: show!)
     }
     
 }
