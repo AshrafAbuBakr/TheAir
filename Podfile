@@ -14,6 +14,7 @@ target 'TheAir' do
     pod 'IQKeyboardManagerSwift'
     pod 'SwiftyUserDefaults'
     pod 'Kingfisher'
+    pod 'RealmSwift'
 
   target 'TheAirTests' do
     inherit! :search_paths

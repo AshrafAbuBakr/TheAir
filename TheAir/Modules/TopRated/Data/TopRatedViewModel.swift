@@ -25,6 +25,8 @@ class TopRatedViewModel {
         RequestManager.beginRequest(withTargetType: Services.self, andTarget: Services.getTopRated(pageNumber: currentPage), responseModel: TopRatedResponse.self) { [unowned self] (data, error) in
             if let data = data as? TopRatedResponse, error == nil {
                 topRated = data
+                topRated!.results?.sort {
+                    $0.voteAverage > $1.voteAverage }
             } else {
                 view?.TopRatedFailed(errorMessage: ErrorHandler.errorMesage(forErrorCode: .generalError))
             }
@@ -67,5 +69,12 @@ class TopRatedViewModel {
             return IMAGE_BASEURL + path
         }
         return ""
+    }
+    
+    func show(forIndex index: Int) -> TopRatedResult? {
+        guard index < topRated?.results?.count ?? 0 else {
+            return nil
+        }
+        return topRated?.results?[index] ?? nil
     }
 }

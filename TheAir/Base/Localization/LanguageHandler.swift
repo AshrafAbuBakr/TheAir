@@ -1,6 +1,6 @@
 //
 //  LanguageHandler.swift
-//  WinjiGoTeacher
+//  TheAir
 //
 //  Created by Ashraf Abu Bakr on 7/9/18.
 //  Copyright © 2018 Ashraf Abu Bakr. All rights reserved.

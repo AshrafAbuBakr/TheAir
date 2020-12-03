@@ -13,6 +13,7 @@ class TopRatedViewController: UIViewController, BaseView {
     @IBOutlet weak var topRatedShowsTableView: UITableView!
    
     var viewModel: TopRatedViewModel!
+    var selectedShowIndex: Int = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,17 @@ class TopRatedViewController: UIViewController, BaseView {
     
     @objc func refresh() {
         viewModel.getTopRatedFirstPage()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetailsSegue" {
+            if let showDetailsVC = segue.destination as? ShowDetailsViewController {
+                let detailsViewModel = ShowDetailsViewModel()
+                detailsViewModel.show = viewModel.show(forIndex: selectedShowIndex)
+                showDetailsVC.viewModel = detailsViewModel
+                detailsViewModel.view = showDetailsVC
+            }
+        }
     }
 }
 
@@ -75,5 +87,10 @@ extension TopRatedViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedShowIndex = indexPath.row
+        performSegue(withIdentifier: "ShowDetailsSegue", sender: self)
     }
 }
